@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-alpine
+  namespace: argocd
+spec:
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - values-staging.yaml
+    path: helm-demo-nginx
+    repoURL: https://github.com/BirukAbreham/helm-demo
+    targetRevision: HEAD

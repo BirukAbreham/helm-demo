@@ -1,0 +1,10 @@
+apiVersion: v1
+name: nginx-alpine
+description: Install nginx
+keyword:
+  - nginx
+  - alpine
+version: 1.0.0
+maintainers:
+  - name: birukabreham
+    email: birukabreham0@gmail.com
