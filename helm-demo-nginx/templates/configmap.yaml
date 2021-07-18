@@ -3,5 +3,4 @@ data:
   version: { { .Values.configmap.data } }
 kind: ConfigMap
 metadata:
-  name: { { .Values.configmap.data } }
   namespace: { { .Values.namespace.name } }

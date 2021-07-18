@@ -12,6 +12,6 @@ spec:
       protocol: TCP
       targetPort: { { .Values.service.port } }
   selector:
-    app: { { .Values.image.repository } }
-    tag: { { .Values.image.tag } }
+    app: nginx
+    tag: alpine
   type: { { .Values.service.type } }

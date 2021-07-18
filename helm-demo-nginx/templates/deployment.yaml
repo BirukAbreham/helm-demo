@@ -2,28 +2,29 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: { { .Values.image.repository } }
-    tag: { { .Values.image.tag } }
+    app: nginx
+    tag: alpine
   name: nginx-alpine
   namespace: { { .Values.namespace.name } }
 spec:
   replicas: { { .Values.replica.count } }
   selector:
     matchLabels:
-      app: { { .Values.image.repository } }
-      tag: { { .Values.image.tag } }
+      app: nginx
+      tag: alpine
   strategy:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
     type: RollingUpdate
-  template:
+  template: 
     metadata:
       labels:
-        app: { { .Values.image.repository } }
-        tag: { { .Values.image.tag } }
+        app: nginx
+        tag: alpine
     spec:
       containers:
         - image: { { .Values.image.repository } }:{ { .Values.image.tag } }
           imagePullPolicy: { { .Values.image.pull.policy } }
           name: nginx-alpine
+          resources: {{ toYaml .Values.resources | indent 12 }}

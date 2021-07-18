@@ -1,15 +1,20 @@
 namespace:
   name: prod
+
 replica:
   count: 1
+
 image:
   repository: nginx
   tag: 1.17.0
+
 resource:
-  CPU: 70m
-  memory: 256M
+  cpu: 70m
+  memory: 256Mi
+
 service:
   type: ClusterIP
   port: 80
+
 configmap:
   data: "version: 1.17.0"
